@@ -46,7 +46,7 @@
 	<div class="col-md-4">
 	<label>Top entires to be displayed</label>
 	<td><input name="top" type="number" step="1"
-                           min="0" max="900" value=0 id = 'top' /></td>
+                           min="0" max="900" id = 'top' /></td>
 	</div>
 	<div class="col-md-4">
 
@@ -62,31 +62,19 @@
 	</body>
 	
 	<script type="text/javascript">
-		var SCRIPT_ROOT = {{ request.script_root|tojson|safe }}
-		
 		$("#display").click(
 				function(){
-					var SCRIPT_ROOT = {{ request.script_root|tojson|safe }}
 					$("#data").html("")
 					$("#errors").html("")
 					display()
-					
-					<!-- $.getJSON(TIME_CALC_URL, {km: km, dist: dist, begin: begin}).done( -->
-					<!-- function(data) { -->
-						<!-- var times = data.result; -->
-						<!-- console.log("Got a response: "); -->
-						<!-- console.log("Response.open = " + times.open); -->
-						<!-- open_time_field.val(moment(times.open).format("YYYY-MM-DDTHH:mm")); -->
-						<!-- close_time_field.val(moment(times.close).format("YYYY-MM-DDTHH:mm")); -->
-						<!-- notes.html(times.error.fontcolor('red')) -->
-					<!-- } -->
 		})
 		
 		function display() {
 			var top = $('#top').val()
-					console.log(top)
+			if ( top == null ) {
+				top = 0 }
+			console.log(top)
 			var format = $('#format').val()
-					console.log(format)
 			var type = $('#type').val()
 				console.log(typeof(type))
 			if ( top < 0 ) {

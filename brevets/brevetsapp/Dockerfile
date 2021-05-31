@@ -3,4 +3,3 @@ LABEL maintainer="jcsdavis@gmail.com"
 COPY . /stuff
 WORKDIR /stuff
 RUN pip install -r requirements.txt
-RUN chmod +x run_tests.sh
